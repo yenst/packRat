@@ -5,7 +5,7 @@ local _, ns = ...
 --
 -- Priority for an item's status:
 --   0. your never-toss list ("protected"), which nothing overrides
---   1. your own choice in the packRat window ("manual")
+--   1. your own choice in the Packrat window ("manual")
 --   2. the AI agent's imported verdict ("agent"), except that a toss for a quest
 --      item is turned into a flag unless the quest data shows it's done
 --   3. the built-in rules below ("rule")
@@ -168,7 +168,7 @@ local function judgeQuests(item, ctx)
     local questish = item.questItem or item.startsQuest or (ctx.db and ctx.db.starts[item.id] ~= nil)
     if not (known and questish) then
         if item.questItem then
-            return { action = "flag", reason = "Quest item packRat has no quest data for" }
+            return { action = "flag", reason = "Quest item Packrat has no quest data for" }
         elseif item.startsQuest then
             return { action = "flag", reason = "Starts a quest: accept it or toss it" }
         end

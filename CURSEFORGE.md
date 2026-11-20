@@ -1,12 +1,12 @@
-# packRat: bag triage that knows your quests
+# Packrat: bag triage that knows your quests
 
-**Full bags, and no idea which quest items you can still throw away?** packRat checks every item in your bags against your quest log, a quest database, your professions and your gear. It tells you what to **Keep**, **Use**, **Flag** or **Toss**, and why.
+**Full bags, and no idea which quest items you can still throw away?** Packrat checks every item in your bags against your quest log, a quest database, your professions and your gear. It tells you what to **Keep**, **Use**, **Flag** or **Toss**, and why.
 
 Made for **WoW Forever** and **Classic Era**.
 
 ## Quest items, sorted out
 
-packRat ships with a quest database of about 4,000 quests, built from QuestieDB's Forever data. For every quest item it knows which quests **need** it, **hand it out** or are **started** by it. It checks those quests against your quest log and the quests you've already turned in:
+Packrat ships with a quest database of about 4,000 quests, built from QuestieDB's Forever data. For every quest item it knows which quests **need** it, **hand it out** or are **started** by it. It checks those quests against your quest log and the quests you've already turned in:
 
 - **Keep:** a quest in your log needs it ("Needed for Gahz'ridian (48)").
 - **Flag:** the quest has gone gray, or you haven't picked it up yet.
@@ -26,9 +26,9 @@ The export includes your level, class, professions, quest log, equipped gear, ba
 ## Cleaning up
 
 - **Sell tossed** at a vendor sells 12 stacks per click, so everything stays in buyback.
-- **Auto-sell** when a vendor opens is optional and off by default. It only sells items you or packRat's rules marked toss, never ones the agent alone decided.
+- **Auto-sell** when a vendor opens is optional and off by default. It only sells items you or Packrat's rules marked toss, never ones the agent alone decided.
 - **Delete next** removes one tossed stack per click, starting with items that have no vendor value. Bind a key to it. Rare and better items are never deleted this way.
-- **History** shows everything packRat sold or deleted, and why.
+- **History** shows everything Packrat sold or deleted, and why.
 
 ## Safety first
 
@@ -39,9 +39,9 @@ The export includes your level, class, professions, quest log, equipped gear, ba
 
 ## Also
 
-- **Baganator:** a packRat button in the bag window, Toss / Flag / Use icons on items, Baganator's junk marking, and the upgrade arrow on gear to equip.
+- **Baganator:** a Packrat button in the bag window, Toss / Flag / Use icons on items, Baganator's junk marking, and the upgrade arrow on gear to equip.
 - **Minimap button and data-bar feed** (Titan Panel, ElvUI, EllesmereUI): "Toss 5 · Flag 3 · 1g 20s".
-- **Tooltips:** "packRat: Toss — Quest done: …"
+- **Tooltips:** "Packrat: Toss — Quest done: …"
 - Soulbound gear your class can never use is marked toss. Gray items and items you marked as junk in RestedXP are too.
 - **Pawn:** its upgrade opinion goes into the export, if it's installed.
 
@@ -59,8 +59,8 @@ The export includes your level, class, professions, quest log, equipped gear, ba
 | `/packrat gap <levels>` | Flag quest items once their quest is this many levels below you (0 = when gray) |
 | `/packrat debug` | Show which game APIs your client has (for bug reports) |
 
-Key bindings: **Key Bindings → packRat** (open window, delete next, never-toss the item under the mouse).
+Key bindings: **Key Bindings → Packrat** (open window, delete next, never-toss the item under the mouse).
 
 ## Credits
 
-The quest data is built from [QuestieDB](https://github.com/Questie/QuestieDB) (GPL-3.0). packRat is GPL-3.0 as well.
+The quest data is built from [QuestieDB](https://github.com/Questie/QuestieDB) (GPL-3.0). Packrat is GPL-3.0 as well.

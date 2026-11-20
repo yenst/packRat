@@ -2,11 +2,11 @@ local _, ns = ...
 
 local Theme, W = ns.Theme, ns.W
 
--- Where packRat shows up outside its own window:
+-- Where Packrat shows up outside its own window:
 --   * Baganator: a button in the backpack view, an icon in an item corner
 --     (Flag / Toss / Use) and a junk plugin so tossed items get the junk coin.
 --   * Without Baganator: a floating button you can drag anywhere.
---   * Item tooltips: a "packRat: Toss - reason" line.
+--   * Item tooltips: a "Packrat: Toss - reason" line.
 local Integrations = {}
 ns.Integrations = Integrations
 
@@ -17,11 +17,11 @@ local function isLoaded(name)
     return IsAddOnLoaded and IsAddOnLoaded(name)
 end
 
--- The packRat button --------------------------------------------------------
+-- The Packrat button --------------------------------------------------------
 
 local function buttonTooltip(tip)
     local c = ns.counts
-    tip:AddLine(Theme.Hex(Theme.accent) .. "packRat|r")
+    tip:AddLine(Theme.Hex(Theme.accent) .. "Packrat|r")
     tip:AddLine(string.format("%s %d   %s %d   %s %d   %s %d",
         Theme.ActionText("toss"), c.toss, Theme.ActionText("flag"), c.flag,
         Theme.ActionText("use"), c.use, Theme.ActionText("unsorted"), c.unsorted))
@@ -79,13 +79,13 @@ local function setupBaganator()
     end
     if api.RegisterRegion then
         local button = makeButton(UIParent, 22)
-        local ok = pcall(api.RegisterRegion, "packRat", "packrat", "backpack", "bottom_left", button)
+        local ok = pcall(api.RegisterRegion, "Packrat", "packrat", "backpack", "bottom_left", button)
         if not ok then
             button:Hide()
         end
     end
     if api.RegisterCornerWidget then
-        pcall(api.RegisterCornerWidget, "packRat", "packrat",
+        pcall(api.RegisterCornerWidget, "Packrat", "packrat",
             function(corner, details)
                 local status = ns.StatusFor(details and details.itemID)
                 local look = status and Theme.ACTION[status.action]
@@ -105,14 +105,14 @@ local function setupBaganator()
             { corner = "top_left", priority = 1 }, true)
     end
     if api.RegisterJunkPlugin then
-        pcall(api.RegisterJunkPlugin, "packRat", "packrat", function(_, _, itemID)
+        pcall(api.RegisterJunkPlugin, "Packrat", "packrat", function(_, _, itemID)
             local status = ns.StatusFor(itemID)
             return status and status.action == "toss" or false
         end)
     end
-    -- Baganator's upgrade arrow on gear packRat says to "use" (equip).
+    -- Baganator's upgrade arrow on gear Packrat says to "use" (equip).
     if api.RegisterUpgradePlugin then
-        pcall(api.RegisterUpgradePlugin, "packRat (Use verdicts)", "packrat", function(itemLink)
+        pcall(api.RegisterUpgradePlugin, "Packrat (Use verdicts)", "packrat", function(itemLink)
             local itemID = itemLink and tonumber(itemLink:match("item:(%d+)"))
             local item = itemID and ns.byID[itemID]
             local status = ns.StatusFor(itemID)
@@ -164,7 +164,7 @@ local function addTooltipLine(tooltip)
         return
     end
     local reason = status.reason ~= "" and (" " .. Theme.Hex(Theme.muted) .. status.reason .. "|r") or ""
-    tooltip:AddLine(Theme.Hex(Theme.accent) .. "packRat:|r " .. Theme.ActionText(status.action) .. reason, 1, 1, 1, true)
+    tooltip:AddLine(Theme.Hex(Theme.accent) .. "Packrat:|r " .. Theme.ActionText(status.action) .. reason, 1, 1, 1, true)
 end
 
 local function setupTooltips()

@@ -1,7 +1,7 @@
 local ADDON, ns = ...
 
 ns.name = ADDON
-ns.TITLE = "packRat"
+ns.TITLE = "Packrat"
 ns.ICON = "Interface\\AddOns\\" .. ADDON .. "\\Media\\icon" -- 64x64
 
 local listeners = {}

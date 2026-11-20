@@ -76,7 +76,7 @@ local function build()
 end
 
 -- Items still in your bags, still linked to one of the quests, and not
--- needed by anything else (packRat says toss or flag).
+-- needed by anything else (Packrat says toss or flag).
 local function current()
     local list = {}
     for _, entry in ipairs(entries) do

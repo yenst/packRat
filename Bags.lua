@@ -99,7 +99,7 @@ local function splitList(text)
     return list
 end
 
--- Reads the flags packRat cares about out of the tooltip lines.
+-- Reads the flags Packrat cares about out of the tooltip lines.
 function Bags.ParseTooltip(lines)
     local facts = { lines = {} }
     for _, text in ipairs(lines) do

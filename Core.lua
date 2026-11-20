@@ -580,9 +580,9 @@ function ns.TossValue()
 end
 
 -- Key binding (Bindings.xml).
-BINDING_HEADER_PACKRAT = "packRat"
+BINDING_HEADER_PACKRAT = "Packrat"
 BINDING_NAME_PACKRAT_DELETE_NEXT = "Delete next tossed item"
-BINDING_NAME_PACKRAT_TOGGLE = "Open packRat"
+BINDING_NAME_PACKRAT_TOGGLE = "Open Packrat"
 BINDING_NAME_PACKRAT_PROTECT = "Never toss the item under the mouse (toggle)"
 function packRat_Protect()
     ns.ProtectHovered()
@@ -668,13 +668,13 @@ end)
 local HELP = {
     "/packrat - open the bag triage window",
     "/packrat export | import - copy your bags for an AI agent / paste its reply",
-    "/packrat next - delete the next tossed stack (or bind a key: Key Bindings > packRat)",
+    "/packrat next - delete the next tossed stack (or bind a key: Key Bindings > Packrat)",
     "/packrat sell - sell tossed items at an open vendor",
     "/packrat gap <levels> - flag quest items once the quest is this many levels below you (0 = when gray)",
     "/packrat grays - toggle auto-tossing gray items",
     "/packrat button - show / hide the floating button",
     "/packrat protect <item link> - add / remove an item on your never-toss list (shift-click the item into chat)",
-    "/packrat history - what packRat sold and deleted",
+    "/packrat history - what Packrat sold and deleted",
     "/packrat options - settings (auto-sell, turn-in prompt, ...)",
     "/packrat autosell - toggle selling tossed items when a vendor opens",
     "/packrat debug - check which game APIs this client has",

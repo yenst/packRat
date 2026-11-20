@@ -1,6 +1,6 @@
 local _, ns = ...
 
--- /packrat debug: which game APIs this client has, and what the ones packRat
+-- /packrat debug: which game APIs this client has, and what the ones Packrat
 -- relies on actually return. WoW Forever shares retail's UI code, so the
 -- answers differ from Classic Era in places; this report settles it in game.
 local Debug = {}
@@ -54,7 +54,7 @@ end
 function Debug.Report()
     local version, build, _, interface = GetBuildInfo()
     local lines = {
-        string.format("packRat debug  ·  client %s (%s), interface %s, project %s", tostring(version), tostring(build),
+        string.format("Packrat debug  ·  client %s (%s), interface %s, project %s", tostring(version), tostring(build),
             tostring(interface), tostring(WOW_PROJECT_ID)),
         string.format("quest data: %s", ns.QuestData and ns.QuestData.source or "missing"),
         string.format("bags: %d items, %d/%d free  ·  quests in log: %d", #ns.items, ns.space.free, ns.space.total, #ns.Quests.list),

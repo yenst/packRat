@@ -1,6 +1,6 @@
-# packRat
+# Packrat
 
-Bag triage for WoW Forever and Classic Era. packRat sorts everything in your bags into **Keep**, **Use**, **Flag** or **Toss**, knows which quest every quest item belongs to, exports your bags for any AI agent (Claude, ChatGPT, ...) and imports its verdicts. Slash command: `/packrat` (or `/rat`).
+Bag triage for WoW Forever and Classic Era. Packrat sorts everything in your bags into **Keep**, **Use**, **Flag** or **Toss**, knows which quest every quest item belongs to, exports your bags for any AI agent (Claude, ChatGPT, ...) and imports its verdicts. Slash command: `/packrat` (or `/rat`).
 
 ## How it decides
 
@@ -48,13 +48,13 @@ For each item, the first of these that applies wins:
 ## Where it shows up
 
 - **Baganator:**
-  - a packRat button in the backpack (click: window, right-click: delete next, shift-click at a vendor: sell);
+  - a Packrat button in the backpack (click: window, right-click: delete next, shift-click at a vendor: sell);
   - Flag / Toss / Use icons in an item corner;
   - the junk plugin;
-  - the upgrade arrow on gear packRat says to use.
+  - the upgrade arrow on gear Packrat says to use.
 - **Minimap button and LDB feed** (Titan Panel, ElvUI / EllesmereUI data bars): "Toss 5 Flag 3 1g 20s". Without Baganator there's also a floating button.
-- **Tooltips:** a "packRat: Toss — reason" line on items.
-- **Key bindings** (Key Bindings → packRat): open the window, delete next, never-toss the item under the mouse.
+- **Tooltips:** a "Packrat: Toss — reason" line on items.
+- **Key bindings** (Key Bindings → Packrat): open the window, delete next, never-toss the item under the mouse.
 
 ## Commands
 

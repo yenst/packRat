@@ -27,14 +27,14 @@ Export.REPLY_FORMAT = "packrat-verdicts"
 Export.VERSION = 1
 
 Export.INSTRUCTIONS = table.concat({
-    "This is a bag dump from the World of Warcraft addon packRat (Classic-era rules: WoW Forever / Classic Era).",
+    "This is a bag dump from the World of Warcraft addon Packrat (Classic-era rules: WoW Forever / Classic Era).",
     "Help the player clean their bags. For every entry in `items`, decide one action:",
     "keep = worth keeping now; use = use, open, equip, eat or learn it now rather than carry it;",
     "flag = player should look at it (unsure, situational, or tied to a low-level quest); toss = sell or delete.",
     "Use the character's level, class and professions, the quest log (`quests`, with level, colour and the item IDs",
     "each quest needs) and the equipped gear. Quest items for active quests that are not gray are keep, never toss.",
     "Each item's `questLinks` comes from a quest database: state log = in the quest log, done = turned in,",
-    "open = not started or abandoned. Never toss an item with a log or open quest link; packRat turns quest-item",
+    "open = not started or abandoned. Never toss an item with a log or open quest link; Packrat turns quest-item",
     "tosses into flags unless every linked quest is done. Items with no questLinks but questItem = true are unknown: flag.",
     "handedOut = the quest gave the item when accepted; it is often not needed to finish. Quests the character's race or",
     "class can't take are already left out. Items with equipmentSets or neverToss are keep. `elsewhere` counts copies in the",
@@ -43,7 +43,7 @@ Export.INSTRUCTIONS = table.concat({
     "Profession materials are keep if the character has that profession; otherwise toss, or flag if they are worth",
     "selling on the auction house. Gear worse than what is equipped, and not useful for another spec, is toss.",
     "Dungeon keys, portal items and attunement items for content at or above the character's level are keep.",
-    "Flavor items with no use are toss. `current` shows what packRat already decided on its own; you may override it.",
+    "Flavor items with no use are toss. `current` shows what Packrat already decided on its own; you may override it.",
     "Reply with ONLY one JSON code block in this format, one entry per item ID, reasons under 60 characters:",
     '{"format":"packrat-verdicts","version":1,"summary":"one line","items":[{"id":2589,"action":"toss","reason":"Linen Cloth, no tailoring"}]}',
 }, " ")
@@ -171,7 +171,7 @@ function Export.ReadVerdicts(text)
         return nil, "Couldn't read the JSON: " .. tostring(err)
     end
     if doc.format == Export.FORMAT then
-        return nil, "That's the packRat export. Paste the agent's reply instead."
+        return nil, "That's the Packrat export. Paste the agent's reply instead."
     end
     if doc.format and doc.format ~= Export.REPLY_FORMAT then
         return nil, "Unknown format \"" .. tostring(doc.format) .. "\"."

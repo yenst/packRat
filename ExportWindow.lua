@@ -118,7 +118,7 @@ function ExportWindow.Update()
             return tostring(err) .. "\n" .. (debugstack and debugstack(2, 8, 0) or "")
         end)
         if not ok then
-            window.exported = "packRat export failed. Copy this and send it over:\n\n" .. result
+            window.exported = "Packrat export failed. Copy this and send it over:\n\n" .. result
             window.edit:SetText(window.exported)
             window.status:SetText(Theme.Hex(Theme.bad) .. "Export failed; the error is in the box.|r")
             ns.Print("Export failed: " .. tostring(result):match("^[^\n]*"))

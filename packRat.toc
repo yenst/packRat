@@ -1,5 +1,5 @@
 ## Interface: 16001, 11509
-## Title: |cfff2a93bpackRat|r
+## Title: |cfff2a93bPackrat|r
 ## Notes: Bag triage: flags quest items for low-level or missing quests, exports your bags for an AI agent and imports its keep / toss verdicts.
 ## Author: yenst
 ## Version: @project-version@

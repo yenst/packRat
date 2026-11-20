@@ -41,7 +41,7 @@ local function build()
         "Up to 12 stacks, all in buyback. Skips agent-only tosses.")
     toggle("List a quest's leftovers after turn-in or abandon", "turnInPrompt")
     toggle("Toss gray items automatically", "tossGrays", nil, ns.Judge)
-    toggle("packRat line in item tooltips", "tooltips")
+    toggle("Packrat line in item tooltips", "tooltips")
     toggle("Minimap button", "minimapButton")
     toggle("Floating button (when Baganator isn't loaded)", "floatingButton")
 
