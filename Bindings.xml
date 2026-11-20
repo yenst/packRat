@@ -1,0 +1,11 @@
+<Bindings>
+    <Binding name="PACKRAT_TOGGLE" header="PACKRAT" category="ADDONS">
+        packRat_Toggle()
+    </Binding>
+    <Binding name="PACKRAT_DELETE_NEXT" category="ADDONS">
+        packRat_DeleteNext()
+    </Binding>
+    <Binding name="PACKRAT_PROTECT" category="ADDONS">
+        packRat_Protect()
+    </Binding>
+</Bindings>

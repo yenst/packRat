@@ -1,0 +1,30 @@
+## Interface: 16001, 11509
+## Title: |cfff2a93bpackRat|r
+## Notes: Bag triage: flags quest items for low-level or missing quests, exports your bags for an AI agent and imports its keep / toss verdicts.
+## Author: yenst
+## Version: @project-version@
+## X-License: GPL-3.0
+## X-Website: https://github.com/yenst/packRat
+## IconTexture: Interface\AddOns\packRat\Media\icon
+## SavedVariables: packRatDB
+## OptionalDeps: Baganator, Syndicator, EllesmereUI, RXPGuides, Pawn, LibDataBroker-1.1, LibDBIcon-1.0
+
+embeds.xml
+
+Init.lua
+JSON.lua
+QuestData.lua
+Rules.lua
+Bags.lua
+Quests.lua
+Export.lua
+Theme.lua
+Widgets.lua
+Window.lua
+ExportWindow.lua
+Prompt.lua
+Options.lua
+Debug.lua
+Broker.lua
+Integrations.lua
+Core.lua
