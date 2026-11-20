@@ -3,6 +3,7 @@
 ## Notes: Bag triage: flags quest items for low-level or missing quests, exports your bags for an AI agent and imports its keep / toss verdicts.
 ## Author: yenst
 ## Version: @project-version@
+## X-Curse-Project-ID: 1818459
 ## X-License: GPL-3.0
 ## X-Website: https://github.com/yenst/packRat
 ## IconTexture: Interface\AddOns\packRat\Media\icon
