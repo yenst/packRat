@@ -95,6 +95,65 @@ function W.Button(parent, label, width, height, onClick)
     return button
 end
 
+-- Square button showing a game texture instead of a word; the word and an
+-- explanation go in its tooltip. Unselected icons are dimmed so a selected
+-- one stands out. tooltip = function(button) -> title, description.
+function W.IconButton(parent, size, texture, fallback, tooltip, onClick)
+    local button = CreateFrame("Button", nil, parent, "BackdropTemplate")
+    button:SetSize(size, size)
+    W.Skin(button, Theme.bgRaised)
+    button.icon = button:CreateTexture(nil, "ARTWORK")
+    button.icon:SetPoint("TOPLEFT", 3, -3)
+    button.icon:SetPoint("BOTTOMRIGHT", -3, 3)
+    button.label = W.Text(button, 10, Theme.text, "CENTER")
+    button.label:SetPoint("CENTER")
+    local function paint(self)
+        local lit = self.hover or self.selected
+        self:SetBackdropColor(unpack(lit and Theme.bgHover or Theme.bgRaised))
+        self:SetBackdropBorderColor(unpack(lit and Theme.accent or Theme.border))
+        self.icon:SetAlpha(lit and 1 or 0.6)
+    end
+    function button:SetIcon(path, text)
+        -- Fall back to a short word if the client doesn't have the texture.
+        local ok = self.icon:SetTexture(path)
+        local missing = ok == false
+        self.icon:SetShown(not missing)
+        self.label:SetText(missing and (text or fallback) or "")
+    end
+    function button:SetSelected(selected)
+        self.selected = selected
+        paint(self)
+    end
+    function button:SetDisabled(disabled)
+        self.disabled = disabled
+        self:SetAlpha(disabled and 0.4 or 1)
+    end
+    button:SetScript("OnEnter", function(self)
+        self.hover = true
+        paint(self)
+        local title, text = tooltip(self)
+        GameTooltip:SetOwner(self, "ANCHOR_TOP")
+        GameTooltip:AddLine(title, 1, 1, 1)
+        if text then
+            GameTooltip:AddLine(text, 0.7, 0.7, 0.7, true)
+        end
+        GameTooltip:Show()
+    end)
+    button:SetScript("OnLeave", function(self)
+        self.hover = false
+        paint(self)
+        GameTooltip:Hide()
+    end)
+    button:SetScript("OnClick", function(self, ...)
+        if not self.disabled then
+            onClick(self, ...)
+        end
+    end)
+    button:SetIcon(texture)
+    paint(button)
+    return button
+end
+
 -- [-] value [+]  over a fixed list of values.
 function W.Stepper(parent, width, values, format, get, set)
     local frame = CreateFrame("Frame", nil, parent)

@@ -24,14 +24,18 @@ local function buildRow(index)
     row.icon:SetSize(20, 20)
     row.icon:SetPoint("LEFT", 2, 0)
     row.icon:SetTexCoord(0.07, 0.93, 0.07, 0.93)
-    row.delete = W.Button(row, "Delete", 56, 20, function(self)
+    row.delete = W.IconButton(row, 22, Theme.BUTTON.delete, "Del", function()
+        return "Delete", "Destroy one stack of this item now. Can't be undone."
+    end, function(self)
         local item = self:GetParent().item
         if item then
             ns.DeleteSlot(item, item.slots[1])
         end
     end)
     row.delete:SetPoint("RIGHT")
-    row.keep = W.Button(row, "Keep", 44, 20, function(self)
+    row.keep = W.IconButton(row, 22, Theme.BUTTON.keep, "K", function()
+        return "Keep", "Keep this item and take it off the list."
+    end, function(self)
         local item = self:GetParent().item
         if item then
             ns.SetManual(item.id, "keep")

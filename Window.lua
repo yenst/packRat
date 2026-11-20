@@ -62,34 +62,54 @@ local function buildRow(parent, index)
     row.badge:SetPoint("LEFT", row.name, "RIGHT", 6, 0)
     row.badge:SetWidth(40)
 
-    row.delete = W.Button(row, "Delete", 52, 20, function(self)
+    local B = Theme.BUTTON
+    local function manual(action)
+        return function(self)
+            local item, status = self:GetParent().item, self:GetParent().status
+            ns.SetManual(item.id, not (status.source == "manual" and status.action == action) and action or nil)
+        end
+    end
+    local function isMine(button, action)
+        local status = button:GetParent().status
+        return status and status.source == "manual" and status.action == action
+    end
+
+    row.delete = W.IconButton(row, 22, B.delete, "Del", function()
+        return "Delete", "Destroy one stack of this item now. Can't be undone."
+    end, function(self)
         local item = self:GetParent().item
         if item then
             ns.DeleteSlot(item, item.slots[1])
         end
     end)
     row.delete:SetPoint("RIGHT", -2, 0)
-    row.toss = W.Button(row, "Toss", 44, 20, function(self)
-        local item, status = self:GetParent().item, self:GetParent().status
-        ns.SetManual(item.id, not (status.source == "manual" and status.action == "toss") and "toss" or nil)
-    end)
+    row.toss = W.IconButton(row, 22, B.toss, "T", function(self)
+        if isMine(self, "toss") then
+            return "Toss (your choice)", "Click again to undo."
+        end
+        return "Toss", "Mark this item to sell or delete. Beats the rules and agent verdicts."
+    end, manual("toss"))
     row.toss:SetPoint("RIGHT", row.delete, "LEFT", -4, 0)
-    row.keep = W.Button(row, "Keep", 44, 20, function(self)
-        local item, status = self:GetParent().item, self:GetParent().status
-        ns.SetManual(item.id, not (status.source == "manual" and status.action == "keep") and "keep" or nil)
-    end)
+    row.keep = W.IconButton(row, 22, B.keep, "K", function(self)
+        if isMine(self, "keep") then
+            return "Keep (your choice)", "Click again to undo."
+        end
+        return "Keep", "Mark this item to keep. Beats the rules and agent verdicts."
+    end, manual("keep"))
     row.keep:SetPoint("RIGHT", row.toss, "LEFT", -4, 0)
-    row.lock = W.Button(row, "Lock", 50, 20, function(self)
+    row.lock = W.IconButton(row, 22, B.lock, "L", function(self)
+        local item = self:GetParent().item
+        if item and ns.IsProtected(item.id) then
+            return "Locked", "On your never-toss list. Click to unlock."
+        end
+        return "Lock", "Never toss this item: beats every rule, agent verdicts and your own Toss. Account-wide."
+    end, function(self)
         local item = self:GetParent().item
         if item then
             ns.ToggleProtected(item.id, item.link or item.name)
         end
     end)
     row.lock:SetPoint("RIGHT", row.keep, "LEFT", -4, 0)
-    W.Tooltip(row.lock, function(tip)
-        tip:AddLine("Never toss this item")
-        tip:AddLine("Beats every rule, agent verdicts and your own Toss. Account-wide.", 0.7, 0.7, 0.7, true)
-    end)
 
     row.reason = W.Text(row, 11, Theme.muted)
     row.reason:SetPoint("LEFT", row.badge, "RIGHT", 8, 0)
@@ -132,10 +152,12 @@ local function updateRow(row, item)
     row.reason:SetText(reason ~= "" and (sourceLabel(status) .. reason) or "")
     row.keep:SetSelected(status.source == "manual" and status.action == "keep")
     row.toss:SetSelected(status.source == "manual" and status.action == "toss")
-    row.delete:SetShown(status.action == "toss")
+    -- Keep the slot so the other icons don't shift; only show Delete for tossed items.
+    row.delete:SetAlpha(status.action == "toss" and 1 or 0)
+    row.delete:EnableMouse(status.action == "toss")
     local locked = ns.IsProtected(item.id)
     row.lock:SetSelected(locked)
-    row.lock:SetLabel(locked and "Locked" or "Lock")
+    row.lock:SetIcon(locked and Theme.BUTTON.locked or Theme.BUTTON.lock, locked and "L!" or "L")
 end
 
 local function summaryText()

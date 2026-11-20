@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.1
+
+- **Icon buttons:** the Lock, Keep, Toss and Delete buttons in the triage window and the quest-leftovers prompt are now icons (padlock, tick, junk coin, red X). Hovering shows the name and what the button does.
+- Icons stay dimmed until you hover them or they're your current choice, so your own locks and picks stand out.
+- Delete keeps its place on rows where it's hidden, so the icons line up on every row.
+- The reason column has more room, so fewer reasons get cut off.
+
 ## 1.0.0
 
 First release.

@@ -65,6 +65,15 @@ Theme.ACTION = {
     unsorted = { label = "-", color = { 0.40, 0.42, 0.46, 1 }, icon = nil },
 }
 
+-- Button icons: textures every client has (Classic Era and Forever).
+Theme.BUTTON = {
+    lock = "Interface\\Buttons\\LockButton-Unlocked-Up",
+    locked = "Interface\\Buttons\\LockButton-Locked-Up",
+    keep = "Interface\\RaidFrame\\ReadyCheck-Ready",
+    toss = "Interface\\Buttons\\UI-GroupLoot-Coin-Up",
+    delete = "Interface\\Buttons\\UI-GroupLoot-Pass-Up",
+}
+
 function Theme.ActionText(action)
     local a = Theme.ACTION[action] or Theme.ACTION.unsorted
     return Theme.Hex(a.color) .. a.label .. "|r"
